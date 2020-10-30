@@ -31,25 +31,92 @@
 // fourth step is to create an array for each area of the area to eventually put the data, .push is how we add items to an emtpy array.
 
 // creating the variable to later append to for the parent
-const cardContainer = document.querySelector('.card-container')
+const cardContainer = document.querySelector('.cards-container');
 
-function articleCreator(array, obj){
+function articleCreator(array, obj,){
 
-// giving each needed tag an element
-    const mainDiv = document.createElement('div');
-    const titleDiv = document.createElement('div');
+    //adding tags to each element
+    const cardDiv = document.createElement('div');
+    const headDiv = document.createElement('div');
     const authDiv = document.createElement('div');
     const imgDiv = document.createElement('div');
     const img = document.createElement('img');
-    const spanName = document.createElement('span');
+    const span = document.createElement('span');
 
-// giving each element class
-    mainDiv.classList.add('card');
-    titleDiv.classList.add('headline');
+
+//adding class to each element
+    cardDiv.classList.add('card');    
+    headDiv.classList.add('headline');
     authDiv.classList.add('author');
-    imgDiv.classList.add('img-container')
+    imgDiv.classList.add('img-container');
 
-    // giving structure
+
+//adding content to each element
+    headDiv.textContent = obj.headline;
+    img.src = obj.authorPhoto.url;
+    span.textContent = obj.authorName;
+
     
+//adding structure to each element
+    imgDiv.appendChild(img);
+    authDiv.appendChild(imgDiv);
+    authDiv.appendChild(span);
+    cardDiv.appendChild(headDiv);
+    cardDiv.appendChild(authDiv);
+    console.log(cardDiv);
+
+
+
+//pushing all the items in the function to each array    
+    array.push(cardDiv);
 }
+
+// empty arrays that each bit from articleCreator adds to.
+
+let javascriptArticles = [];
+let bootstrapArticles = [];
+let technologyArticles = [];
+let jqueryArticles = [];
+let nodejsArticles = [];
+
+// using axios to call the data needed
+
+axios
+.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(response => {
+//collecting the response for each item and adding
+    response.data.articles.bootstrap.forEach((article) => {
+        articleCreator(bootstrapArticles, article, 'bootstrap');
+    });
+   bootstrapArticles.forEach((article)=>{
+       cardContainer.appendChild(article);
+   })
+    response.data.articles.javascript.forEach((article) => {
+        articleCreator(javascriptArticles, article, "javascript");
+    });
+    javascriptArticles.forEach((article)=>{
+        cardContainer.appendChild(article);
+    })
+    response.data.articles.technology.forEach((article) => {
+        articleCreator(technologyArticles, article, 'technology');
+    });
+    technologyArticles.forEach((article)=>{
+        cardContainer.appendChild(article);
+    })
+    response.data.articles.jquery.forEach((article) => {
+        articleCreator(jqueryArticles, article, 'jquery');
+    });
+    jqueryArticles.forEach((article)=>{
+        cardContainer.appendChild(article);
+    })
+    response.data.articles.node.forEach((article) => {
+        articleCreator(nodejsArticles, article, 'node.js');
+    });
+    nodejsArticles.forEach((article)=>{
+        cardContainer.appendChild(article);
+    })
+    // console.log(nodejsArticles);
+
+})
+.catch(error => {console.log('Error! : ' + error)});
 
