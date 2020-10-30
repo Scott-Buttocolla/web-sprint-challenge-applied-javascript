@@ -14,9 +14,6 @@
 // declaring topicsTabs to the parent element in HTML
 const topics = document.querySelector('.topics');
 
-// axios is pre-loaded in the HTML file. No need to npm install axios and add import axios from "axios" for access to axios
-// comment out line 11 in HTML file if axios is to be imported instead and add import line above on line 13 for readablity with proper comments
-
 function tabCreator(data){
     // creating the element
     const tabDiv = document.createElement('div');
@@ -31,6 +28,14 @@ console.log(tabCreator)
 // axios is pre-loaded in the HTML file. No need to npm install axios and add import axios from "axios" for access to axios
 // comment out line 11 in HTML file if axios is to be imported instead and add import line above on line 13 for readablity with proper comments
 
+axios
+.get('https://lambda-times-backend.herokuapp.com/topics') // source of array that axios accesses
+.then(response => {
+    response.data.topics.forEach((topic)=>{  // calling each value from topics object
+        tabCreator(topic);
+    });
+})
+ .catch(error => {console.log('Error! : ' + error)});  // catching errors with error message
 
 
 
