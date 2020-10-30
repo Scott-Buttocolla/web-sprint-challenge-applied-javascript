@@ -26,15 +26,15 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. What is the DOM?
+1. What is the DOM? The document object model allows programming languages to access the page via javascript and not be forced to be only in html or css. Through dom manipulation we can access and add different aspects to a page based on what the programmer wants and allow more interactivity through various functions.
 
-2. What is an event?
+2. What is an event? An event is a user interaction. Clicking, double clicking, mouse hovering over a specified object, wheel scrolling, using the side scroll bar, etc... There are many hidden events as well such as page loading, reaching the end of a page, being on a page for X amount of time. All these and many more can be added to functions to give the page more interacivty to allow the user to have a responsive visit.
 
-3. What is an event listener?
+3. What is an event listener? An event listener is a function that will be invoked once an event has occured. If you set a button to turn red when clicked, that button will stay static till clicked and the even of the click will invoke the listener to then turn that button red.
 
-4. Why would we convert a NodeList into an Array?
+4. Why would we convert a NodeList into an Array? A nodelist lives in the browser and cannot be directly accesed using JavaScript. You first have to call the Nodelist then convert it into an array so that you may iterate through the array and access the data inside via your function/s. This allows you function/s to call the key such as (name), and produce the value (John), when that particular function is invoked.
 
-5. What is a component?
+5. What is a component? A component in DOM allows us to add html and css directly to the page with JavaScript allowing us more access and fluidity to structure without directly effecting the html and css files.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -84,6 +84,6 @@ After finishing your required elements, you can push your work further. These go
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` branch (student's  Repo). **Please don't merge your own pull request**
+- [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` branch (student's Repo). **Please don't merge your own pull request**
 - [ ] Add your team lead as a reviewer on the pull-request
 - [ ] Your team lead will count the project as complete after receiving your pull-request
