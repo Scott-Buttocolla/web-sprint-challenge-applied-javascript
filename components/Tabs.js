@@ -23,6 +23,7 @@ function tabCreator(data){
     tabDiv.textContent = data;
     //adding the structure 
     topics.appendChild(tabDiv);
+    return tabDiv
 }
 // console.log(tabCreator)
 // axios is pre-loaded in the HTML file. No need to npm install axios and add import axios from "axios" for access to axios

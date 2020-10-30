@@ -33,7 +33,7 @@
 // creating the variable to later append to for the parent
 const cardContainer = document.querySelector('.cards-container');
 
-function articleCreator(array, obj,){
+function articleCreator(array, obj, topic){
 
     //adding tags to each element
     const cardDiv = document.createElement('div');
@@ -53,7 +53,9 @@ function articleCreator(array, obj,){
 
 //adding content to each element
     headDiv.textContent = obj.headline;
-    img.src = obj.authorPhoto.url;
+    img.src = obj.authorPhoto;  // has access to pictures but not rendering. Shows that they are on local host server but not pulling
+                                // down from the nodelist. Not sure why, need to research how to access the photos.
+                                // could be bad links but they do work through postman and pull up the image correctly
     span.textContent = obj.authorName;
 
     
@@ -66,6 +68,11 @@ function articleCreator(array, obj,){
     console.log(cardDiv);
 
 
+
+// adds and passes the topic related to that article for console.logs
+// going to see what needs to be done, possibly needs to be added in the tabs js
+// currently the structure reflects each atrticle topic correctly
+    cardDiv.setAttribute('data-topic', topic); 
 
 //pushing all the items in the function to each array    
     array.push(cardDiv);
@@ -115,7 +122,7 @@ axios
     nodejsArticles.forEach((article)=>{
         cardContainer.appendChild(article);
     })
-    // console.log(nodejsArticles);
+     console.log(nodejsArticles);
 
 })
 .catch(error => {console.log('Error! : ' + error)});
