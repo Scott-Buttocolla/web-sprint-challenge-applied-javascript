@@ -86,10 +86,11 @@ let technologyArticles = [];
 let jqueryArticles = [];
 let nodejsArticles = [];
 
+
 // using axios to call the data needed
 
 axios
-.get('https://lambda-times-backend.herokuapp.com/articles')
+.get('https://lambda-times-api.herokuapp.com/articles')
 .then(response => {
 //collecting the response for each item and adding
     response.data.articles.bootstrap.forEach((article) => {

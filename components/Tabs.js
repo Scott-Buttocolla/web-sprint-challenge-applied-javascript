@@ -30,7 +30,7 @@ function tabCreator(data){
 // comment out line 11 in HTML file if axios is to be imported instead and add import line above on line 13 for readablity with proper comments
 
 axios
-.get('https://lambda-times-backend.herokuapp.com/topics') // source of array that axios accesses
+.get('https://lambda-times-api.herokuapp.com/topics') // source of array that axios accesses
 .then(response => {
     response.data.topics.forEach((topic)=>{  // calling each value from topics object
         tabCreator(topic);
